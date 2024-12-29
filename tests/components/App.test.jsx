@@ -1,8 +1,8 @@
-import {it,expect,describe} from 'vitest'
+// import {it,expect,describe} from 'vitest'
 import {render,screen} from '@testing-library/react'
 import App from "../../src/App"
 import React from 'react';
-import '@testing-library/jest-dom'
+// import '@testing-library/jest-dom/vitest'
 
 describe("App",() =>{
     it("Display empty list if not todo items",()=>{
