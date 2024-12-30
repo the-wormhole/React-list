@@ -47,16 +47,17 @@ const dispEdit = (ele) => {
       <div id="app-container">
           <h1>Todo List</h1>
         <div id="list-container">
-            <form onSubmit = {addElement}>
-                <label name="task">Task : </label>
+            <form onSubmit = {addElement} role="todo">
+                <label htmlFor="task">Task : </label>
                 <input 
                     placeholder="Enter task...." 
+                    id='task'
                     name="task"
                     required
                     value={name}
                     onChange = {(e) => {setName(e.target.value)}}
                 /><br/>
-                <input type="submit" style={{marginLeft:"20%", marginTop:"10px" }}/>
+                <input type="submit" style={{marginLeft:"20%", marginTop:"10px" }} disabled={name.length > 0 ? false:true}/>
                 
             </form>
             <ul className ="todo-list">
