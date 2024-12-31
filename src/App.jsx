@@ -1,6 +1,7 @@
 import React from 'react';
 import {useState} from 'react'
 
+
 export default function App() {
 
 const [name,setName] = useState("");
@@ -20,7 +21,6 @@ const addElement = (event) => {
 
 const deleteElement = (ele) =>{
 
-    console.log(ele);
     var updatedList = list.filter((task)=>{
         return task.id !== ele.id
     })
@@ -44,9 +44,9 @@ const dispEdit = (ele) => {
     return setList(updatedList); 
 }
   return (
-      <div id="app-container">
-          <h1>Todo List</h1>
-        <div id="list-container">
+      <div className='flex flex-col justify-center items-center' id="app-container">
+          <h1 className='text-3xl pt-3'>Todo List</h1>
+        <div className='flex flex-col justify-center' id="list-container">
             <form onSubmit = {addElement} role="todo">
                 <label htmlFor="task">Task : </label>
                 <input 
@@ -57,7 +57,7 @@ const dispEdit = (ele) => {
                     value={name}
                     onChange = {(e) => {setName(e.target.value)}}
                 /><br/>
-                <input type="submit" style={{marginLeft:"20%", marginTop:"10px" }} disabled={name.length > 0 ? false:true}/>
+                <input className='bg-gray-700 w-32 text-yellow-300 hover:text-rose-50 cursor-pointer' type="submit" style={{marginLeft:"20%", marginTop:"10px" }} disabled={name.length > 0 ? false:true}/>
                 
             </form>
             <ul className ="todo-list">
@@ -65,13 +65,13 @@ const dispEdit = (ele) => {
                 {list.map((listEle,ind) => {
 
                     return( 
-                            <li key = {ind}>
-                            {listEle.name}
-                            <button onClick = {(e) => deleteElement(listEle)}>Delete</button>
-                            <button onClick = {(e) => dispEdit(listEle)} >Edit</button>
+                            <li className='grid grid-cols-3 gap-4 hover:place-items-center space-y-2' key = {ind}>
+                            <span className='text-xl font-bold capitalize' >{listEle.name}</span>
+                            <button className='bg-blue-500 text-white' onClick = {(e) => deleteElement(listEle)}>Delete</button>
+                            <button className='bg-blue-500 text-white w-10 border-' onClick = {(e) => dispEdit(listEle)} >Edit</button>
                             {listEle.visi && 
                             
-                                <input value={listEle.name} onChange = {(e) => updateElement(e,listEle)} onBlur = {(e) => dispEdit(listEle)}/>
+                                <input autoFocus value={listEle.name} onChange = {(e) => updateElement(e,listEle)} onBlur = {(e) => dispEdit(listEle)}/>
                             
                             }
                         </li>

@@ -1,8 +1,7 @@
-// import {it,expect,describe} from 'vitest'
+import {it,expect,describe} from 'vitest'
 import {render,screen} from '@testing-library/react'
 import App from "../../src/App"
 import React from 'react';
-// import { expect, it } from 'vitest';
 import userEvent from "@testing-library/user-event"
 // import '@testing-library/jest-dom/vitest'
 
