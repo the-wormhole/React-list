@@ -1,6 +1,7 @@
 import React from 'react';
 import {useState} from 'react'
-
+import Button from './components/buttons';
+import Input from './components/input';
 
 export default function App() {
 
@@ -49,15 +50,9 @@ const dispEdit = (ele) => {
         <div className='flex flex-col justify-center' id="list-container">
             <form onSubmit = {addElement} role="todo">
                 <label htmlFor="task">Task : </label>
-                <input 
-                    placeholder="Enter task...." 
-                    id='task'
-                    name="task"
-                    required
-                    value={name}
-                    onChange = {(e) => {setName(e.target.value)}}
-                /><br/>
-                <input className='bg-gray-700 w-32 text-yellow-300 hover:text-rose-50 cursor-pointer' type="submit" style={{marginLeft:"20%", marginTop:"10px" }} disabled={name.length > 0 ? false:true}/>
+                <Input name='task' id='task' value={name} required onChange = {(e) => setName(e.target.value)} placeholder="Enter task..."/>
+                <br/>
+                <Input customClass='bg-gray-700 w-32 text-yellow-300 hover:text-rose-50 cursor-pointer hover:bg-gray-400 ml-10 mt-1' type='submit' disabled={name.length > 0 ? false:true} />
                 
             </form>
             <ul className ="todo-list">
@@ -67,8 +62,8 @@ const dispEdit = (ele) => {
                     return( 
                             <li className='grid grid-cols-3 gap-4 hover:place-items-center space-y-2' key = {ind}>
                             <span className='text-xl font-bold capitalize' >{listEle.name}</span>
-                            <button className='bg-blue-500 text-white' onClick = {(e) => deleteElement(listEle)}>Delete</button>
-                            <button className='bg-blue-500 text-white w-10 border-' onClick = {(e) => dispEdit(listEle)} >Edit</button>
+                            <Button customClass='bg-blue-500 text-white' onClick = {(e) => deleteElement(listEle)} text="Delete"/>
+                            <Button customClass='bg-blue-500 text-white w-10' onClick = {(e) => dispEdit(listEle)} text="Edit"/>
                             {listEle.visi && 
                             
                                 <input autoFocus value={listEle.name} onChange = {(e) => updateElement(e,listEle)} onBlur = {(e) => dispEdit(listEle)}/>
